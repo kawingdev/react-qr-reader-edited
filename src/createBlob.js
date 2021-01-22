@@ -10,14 +10,15 @@ module.exports = function createBlob(parts, properties) {
     if (e.name !== "TypeError") {
       throw e;
     }
-    var BlobBuilder = window.BlobBuilder ||
-                      window.MSBlobBuilder ||
-                      window.MozBlobBuilder ||
-                      window.WebKitBlobBuilder;
+    var BlobBuilder =
+      window.BlobBuilder ||
+      window.MSBlobBuilder ||
+      window.MozBlobBuilder ||
+      window.WebKitBlobBuilder;
     var builder = new BlobBuilder();
     for (var i = 0; i < parts.length; i += 1) {
       builder.append(parts[i]);
     }
     return builder.getBlob(properties.type);
   }
-}
+};
